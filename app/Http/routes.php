@@ -42,7 +42,11 @@ Route::post('comment/store', 'CommentsController@store');
 /*
 	php artisan make:controller Query/QueryHomeController
 */
+
+//转到查询页面
 Route::group(['prefix' => 'query', 'namespace' => 'Query'], function()
 {
  	Route::get('/', 'QueryHomeController@index');
 });
+//转到预定页面的控制器
+Route::get('booking/{date}/{time}', 'BookingHomeController@index');
