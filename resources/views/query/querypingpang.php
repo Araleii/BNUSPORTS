@@ -3,8 +3,7 @@
 @section('content')
 
 	<div class="container">	
-
-
+		
 <!--	导航部分-->
 	<div class="row-fluid">
 		<div class="span12">
@@ -22,7 +21,7 @@
 					<a href="#">篮球</a>
 				</li>
 				<li>
-					<a href="#">足球</a>
+					<a href="#">篮球</a>
 				</li>
 				<li>
 					<a href="#">游泳</a>

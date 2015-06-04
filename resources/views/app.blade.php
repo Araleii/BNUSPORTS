@@ -28,13 +28,23 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="{{ url('/') }}">BNU SPORTS</a>
+				<a class="navbar-brand" href="{{ url('/') }}"><strong>BNU SPORTS</strong></a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-<!--				<ul class="nav navbar-nav">
-					<li><a href="{{ url('/') }}">查询</a></li>
-				</ul>-->
+				<ul class="nav navbar-nav">
+					<li><a href="{{ URL('query') }}">场馆查询</a></li>
+					<li><a href="{{ URL('query') }}">活动信息</a></li>
+					<li><a></a></li>
+					<li><a></a></li>
+					<li><a></a></li>
+					<li><a></a></li>
+					<li><a></a></li>
+				</ul>
+				<ul class="nav navbar-nav">
+					<li><a href="{{ URL('query') }}">{{ Inspiring::quote() }}</a></li>
+				</ul>
+				
 
 				<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
@@ -44,6 +54,8 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
+								<li><a href="#">个人中心</a></li>
+								<li class="divider"></li>
 								<li><a href="{{ url('/auth/logout') }}">退出登录</a></li>
 							</ul>
 						</li>
@@ -54,6 +66,14 @@
 	</nav>
 
 	@yield('content')
+	
+	
+  <div class="container" style="margin-top: 20px;">
+    <div id="footer" style="text-align: center; border-top: dashed 3px #eeeeee; margin: 50px 0; padding: 20px;">
+      ©2015 <a href="http://araleii.com">Araleii</a>
+    </div>
+  </div>
+
 
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>

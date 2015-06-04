@@ -14,11 +14,21 @@ class QueryHomeController extends Controller {
 	 *
 	 * @return Response
 	 */
+	 //该方法负责羽毛球
 	public function index()
 	{
 		return view('query.queryhome')->withBadmintonstates(BadmintonState::all());
 	}
 
+
+	 //该方法负责乒乓球
+	public function pingpang()
+	{
+		return view('query.queryhome')->withBadmintonstates(BadmintonState::all());
+	}
+	
+	
+	
 	/**
 	 * Show the form for creating a new resource.
 	 *

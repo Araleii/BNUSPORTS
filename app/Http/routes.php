@@ -19,11 +19,11 @@ Route::get('home','HomeController@index');
 //必须要通过验证才可以访问登录,这样主要也起到保密的作用.
 Route::get('/',['middleware' => 'auth', 'uses' => 'HomeController@index']);
 
-//
-//Route::controllers([
-//	'auth' => 'Auth\AuthController',
-//	'password' => 'Auth\PasswordController',
-//]);
+
+Route::controllers([
+	//'auth' => 'Auth\AuthController',
+	'password' => 'Auth\PasswordController',
+]);
 
 
 Route::get('auth/login', 'Auth\AuthController@getLogin');
@@ -51,7 +51,8 @@ Route::post('comment/store', 'CommentsController@store');
 //转到查询页面
 Route::group(['prefix' => 'query', 'namespace' => 'Query'], function()
 {
- 	Route::get('/', 'QueryHomeController@index');
+ 	Route::get('/', 'QueryHomeController@index');//这个默认是羽毛球的,这项业务比较繁忙
+	Route::get('pingpang','QueryHomeController@pingpang');
 });
 //转到预定页面的控制器
 Route::get('booking/{type}/{date}/{time}/{name}', 'BookingHomeController@index');
