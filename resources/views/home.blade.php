@@ -1,4 +1,4 @@
-@extends('_layouts.default')
+@extends('app')
 
 @section('content')
 	<div id="title" style="text-align: center;">
@@ -11,29 +11,10 @@
 		<a href="{{ URL('query') }}" class="btn btn-info">个人中心</a>
 		<a href="{{ URL('query') }}" class="btn btn-info">场馆管理</a>
 		@if(Auth::guest())
-		<a href="{{ URL('auth/login') }}" class="btn btn-info">登录</a>
+<!--		<a href="{{ URL('auth/login') }}" class="btn btn-info">登录</a>-->
 		@else
-		<h1>Username</h1>
-		@endif
-		
-		
+<!--		<h1>Username</h1>-->
+		@endif	
 	</div> 	
 	<hr>
-	<div id="content">
-		
-<!--		<ul>
-			@foreach ($pages as $page)
-			<li style="margin: 50px 0;">
-				<div class="title">
-					<a href="{{ URL('pages/'.$page->id) }}">
-						<h4>{{ $page->title }}</h4>
-					</a>
-				</div>
-				<div class="body">
-					<p>{{ $page->body }}</p>
-				</div>
-			</li>
-			@endforeach
-		</ul>-->
-	</div>
 @endsection
