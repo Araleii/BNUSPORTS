@@ -10,6 +10,13 @@
 		<a href="{{ URL('query') }}" class="btn btn-info">活动信息</a>
 		<a href="{{ URL('query') }}" class="btn btn-info">个人中心</a>
 		<a href="{{ URL('query') }}" class="btn btn-info">场馆管理</a>
+		@if(Auth::guest())
+		<a href="{{ URL('auth/login') }}" class="btn btn-info">登录</a>
+		@else
+		<h1>Username</h1>
+		@endif
+		
+		
 	</div> 	
 	<hr>
 	<div id="content">

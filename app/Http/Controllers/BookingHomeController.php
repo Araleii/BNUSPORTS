@@ -11,10 +11,11 @@ class BookingHomeController extends Controller {
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
+	 {type}/{date}/{time}
 	 */
-	public function index()
+	public function index($type,$date,$time,$name)
 	{
-		
+		return view('BookingHome',['type'=>$type,'date'=>$date,'time'=>$time,'name'=>$name]);
 	}
 
 	/**

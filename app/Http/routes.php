@@ -27,6 +27,8 @@ Route::controllers([
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
+//Route::get('auth/register', 'Auth\AuthController@getLogout');
+
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin','middleware' => 'auth'], function()
 {
@@ -49,4 +51,4 @@ Route::group(['prefix' => 'query', 'namespace' => 'Query'], function()
  	Route::get('/', 'QueryHomeController@index');
 });
 //转到预定页面的控制器
-Route::get('booking/{date}/{time}', 'BookingHomeController@index');
+Route::get('booking/{type}/{date}/{time}/{name}', 'BookingHomeController@index');

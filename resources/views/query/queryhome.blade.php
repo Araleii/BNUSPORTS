@@ -95,7 +95,18 @@
 			         <td>{{ $badmintonstate->name }}</td>
 					 <td>
 					   @if ($badmintonstate->morning==0)
-					    <form action="{{ URL('booking/'.$badmintonstate->date.'morning') }}" method="GET" style="display: inline;">
+					    <form action="{{ URL('booking/badminton/'.$badmintonstate->date.'/morning/'.$badmintonstate->name) }}" method="GET" style="display: inline;">
+             				 <input name="_method" type="hidden" value="DELETE">
+             				 <input type="hidden" name="_token" value="{{ csrf_token() }}">
+							 <button type="submit" class="btn btn-primary">预定</button>
+          				 </form>
+                		@else
+                 		<a href="#" class="btn btn-default btn-lg disabled" role="button">已订</a>
+              			@endif
+					  </td>
+					  <td>
+					   @if ($badmintonstate->afternoon==0)
+					    <form action="{{ URL('booking/badminton/'.$badmintonstate->date.'/afternoon/'.$badmintonstate->name) }}" method="GET" style="display: inline;">
              				 <input name="_method" type="hidden" value="DELETE">
              				 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 							 <button type="submit" class="btn btn-primary">预定</button>
@@ -105,15 +116,12 @@
               			@endif
 					  </td>
 					 <td>
-					   @if ($badmintonstate->afternoon==0)
-                 		<button type="button" class="btn btn-primary">预定</button>
-                		@else
-                 		<a href="#" class="btn btn-default btn-lg disabled" role="button">已订</a>
-              			@endif
-					  </td>
-					 <td>
 					   @if ($badmintonstate->evening==0)
-                 		<button type="button" class="btn btn-primary">预定</button>
+					    <form action="{{ URL('booking/badminton/'.$badmintonstate->date.'/evening/'.$badmintonstate->name) }}" method="GET" style="display: inline;">
+             				 <input name="_method" type="hidden" value="DELETE">
+             				 <input type="hidden" name="_token" value="{{ csrf_token() }}">
+							 <button type="submit" class="btn btn-primary">预定</button>
+          				 </form>
                 		@else
                  		<a href="#" class="btn btn-default btn-lg disabled" role="button">已订</a>
               			@endif
