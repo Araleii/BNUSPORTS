@@ -1,7 +1,7 @@
-@extends('app')
+@extends('appquery')
 
 @section('content')
-
+	{{$type}}
 	<div class="container">	
 
 
@@ -10,7 +10,7 @@
 		<div class="span12">
 			<ul class="nav nav-tabs">
 				<li class="active">
-					<a href="#">羽毛球</a>
+					<a href="{{ URL('query') }}">羽毛球</a>
 				</li>
 				<li>
 					<a href="#">乒乓球</a>

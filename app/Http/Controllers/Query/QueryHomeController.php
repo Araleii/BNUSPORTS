@@ -17,7 +17,7 @@ class QueryHomeController extends Controller {
 	 //该方法负责羽毛球
 	public function index()
 	{
-		return view('query.queryhome')->withBadmintonstates(BadmintonState::all());
+		return view('query.queryhome',['type'=>1])->withBadmintonstates(BadmintonState::all());
 	}
 
 

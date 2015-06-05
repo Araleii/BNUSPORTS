@@ -32,25 +32,29 @@
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
+				<ul class="nav navbar-nav navbar">
 					<li><a href="{{ URL('query') }}">场馆查询</a></li>
-					<li><a href="{{ URL('query') }}">活动信息</a></li>
-					<li><a></a></li>
+					<li><a href="{{ URL('activity') }}">活动信息</a></li>
 					<li><a></a></li>
 					<li><a></a></li>
 					<li><a></a></li>
 					<li><a></a></li>
 				</ul>
-				<ul class="nav navbar-nav">
+				<ul class="nav navbar-nav navbar-center">
 					<li><a href="{{ URL('query') }}">{{ Inspiring::quote() }}</a></li>
 				</ul>
 				
 
 				<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
-<!--						<li><a href="{{ url('/auth/login') }}">登录</a></li>
-						<li><a href="{{ url('/auth/register') }}">Register</a></li>-->
+<!--						<li><a href="{{ url('/auth/login') }}">登录</a></li>-->
+<!--						<li><a href="{{ url('/auth/register') }}">Register</a></li>-->
 					@else
+						@if(Auth::user()->usertype==2)
+<!--						2代表管理员-->
+						<li><a href="{{ URL('query') }}">场馆管理</a></li>
+						<li><a href="{{ URL('activity/adminhome') }}">活动管理</a></li>
+						@endif
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">

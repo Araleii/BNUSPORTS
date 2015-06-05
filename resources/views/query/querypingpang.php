@@ -1,4 +1,4 @@
-@extends('app')
+@extends('appquery')
 
 @section('content')
 
