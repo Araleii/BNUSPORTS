@@ -1,4 +1,4 @@
-@extends('appquery')
+@extends('appgym')
 
 @section('content')
 	<!--{{$type}}-->
@@ -56,39 +56,39 @@
 <!--	日期导航部分开始-->
 					<ul class="nav nav-pills">
 					@if($offset==0)
-					  <li class="active"><a style="cursor:pointer;" id="d1" href="{{ URL('query/badminton/0') }}"></a></li>
+					  <li class="active"><a style="cursor:pointer;" id="d1" href="{{ URL('query/adminhome/badminton/0') }}"></a></li>
 					@else
-					  <li><a style="cursor:pointer;" id="d1" href="{{ URL('query/badminton/0') }}"></a></li>
+					  <li><a style="cursor:pointer;" id="d1" href="{{ URL('query/adminhome/badminton/0') }}"></a></li>
 					@endif
 					@if($offset==1)
-					  <li class="active"><a style="cursor:pointer;" id="d2" href="{{ URL('query/badminton/1') }}"></a></li>
+					  <li class="active"><a style="cursor:pointer;" id="d2" href="{{ URL('query/adminhome/badminton/1') }}"></a></li>
 					@else
-					  <li><a style="cursor:pointer;" id="d2" href="{{ URL('query/badminton/1') }}"></a></li>
+					  <li><a style="cursor:pointer;" id="d2" href="{{ URL('query/adminhome/badminton/1') }}"></a></li>
 					@endif
 					@if($offset==2)
-					  <li class="active"><a style="cursor:pointer;" id="d3" href="{{ URL('query/badminton/2') }}"></a></li>
+					  <li class="active"><a style="cursor:pointer;" id="d3" href="{{ URL('query/adminhome/badminton/2') }}"></a></li>
 					@else
-					  <li><a style="cursor:pointer;" id="d3" href="{{ URL('query/badminton/2') }}"></a></li>
+					  <li><a style="cursor:pointer;" id="d3" href="{{ URL('query/adminhome/badminton/2') }}"></a></li>
 					@endif
 					@if($offset==3)
-					  <li class="active"><a style="cursor:pointer;" id="d4" href="{{ URL('query/badminton/3') }}"></a></li>
+					  <li class="active"><a style="cursor:pointer;" id="d4" href="{{ URL('query/adminhome/badminton/3') }}"></a></li>
 					@else
-					  <li><a style="cursor:pointer;" id="d4" href="{{ URL('query/badminton/3') }}"></a></li>
+					  <li><a style="cursor:pointer;" id="d4" href="{{ URL('query/adminhome/badminton/3') }}"></a></li>
 					@endif
 					@if($offset==4)
-					  <li class="active"><a style="cursor:pointer;" id="d5" href="{{ URL('query/badminton/4') }}"></a></li>
+					  <li class="active"><a style="cursor:pointer;" id="d5" href="{{ URL('query/adminhome/badminton/4') }}"></a></li>
 					@else
-					  <li><a style="cursor:pointer;" id="d5" href="{{ URL('query/badminton/4') }}"></a></li>
+					  <li><a style="cursor:pointer;" id="d5" href="{{ URL('query/adminhome/badminton/4') }}"></a></li>
 					@endif
 					@if($offset==5)
-					  <li class="active"><a style="cursor:pointer;" id="d6" href="{{ URL('query/badminton/5') }}"></a></li>
+					  <li class="active"><a style="cursor:pointer;" id="d6" href="{{ URL('query/adminhome/badminton/5') }}"></a></li>
 					@else
-					  <li><a style="cursor:pointer;" id="d6" href="{{ URL('query/badminton/5') }}"></a></li>
+					  <li><a style="cursor:pointer;" id="d6" href="{{ URL('query/adminhome/badminton/5') }}"></a></li>
 					@endif
 					@if($offset==6)
-					  <li class="active"><a style="cursor:pointer;" id="d7" href="{{ URL('query/badminton/6') }}"></a></li>
+					  <li class="active"><a style="cursor:pointer;" id="d7" href="{{ URL('query/adminhome/badminton/6') }}"></a></li>
 					@else
-					  <li><a style="cursor:pointer;" id="d7" href="{{ URL('query/badminton/6') }}"></a></li>
+					  <li><a style="cursor:pointer;" id="d7" href="{{ URL('query/adminhome/badminton/6') }}"></a></li>
 					@endif
 
 					  	<script type="text/javascript">
@@ -139,6 +139,12 @@
              				 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 							 <button type="submit" class="btn btn-primary">预定</button>
           				 </form>
+						 <form action="{{ URL('booking/badminton/'.$badmintonstate->date.'/morning/'.$badmintonstate->name) }}" method="GET" style="display: inline;">
+             				 <input name="_method" type="hidden" value="DELETE">
+             				 <input type="hidden" name="_token" value="{{ csrf_token() }}">
+							 <button type="submit" class="btn btn-primary">预定</button>
+          				 </form>
+						   
                 		@else
                  		<a href="#" class="btn btn-default btn-lg disabled" role="button">已订</a>
               			@endif

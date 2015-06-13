@@ -17,6 +17,20 @@
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
+	
+	<link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+		function getDate(offset){
+			var d = new Date();
+			d.setDate(d.getDate()+offset);
+			var str = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
+			return str;
+		}
+	</script>
+	
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -28,12 +42,12 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="{{ url('/') }}"><strong>BNU SPORTS</strong></a>
+				<a class="navbar-brand" href="{{ url('/') }}">BNU SPORTS</a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar">
-					<li class="active"><a href="{{ URL('query') }}">场馆查询</a></li>
+					<li class="active"><a href="{{ URL('query/badminton/0') }}">场馆查询</a></li>
 					<li><a href="{{ URL('activity') }}">活动信息</a></li>
 					<li><a></a></li>
 					<li><a></a></li>
@@ -41,7 +55,7 @@
 					<li><a></a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-center">
-					<li><a href="{{ URL('query') }}">{{ Inspiring::quote() }}</a></li>
+					<li><a href="{{ URL('/') }}">{{ Inspiring::quote() }}</a></li>
 				</ul>
 				
 
@@ -52,7 +66,7 @@
 					@else
 						@if(Auth::user()->usertype==2)
 <!--						2代表管理员-->
-						<li><a href="{{ URL('query') }}">场馆管理</a></li>
+						<li><a href="{{ URL('query/adminhome/badminton/0') }}">场馆管理</a></li>
 						<li><a href="{{ URL('activity/adminhome') }}">活动管理</a></li>
 						@endif
 						<li class="dropdown">
@@ -70,8 +84,7 @@
 	</nav>
 
 	@yield('content')
-	
-	
+
   <div class="container" style="margin-top: 20px;">
     <div id="footer" style="text-align: center; border-top: dashed 3px #eeeeee; margin: 50px 0; padding: 20px;">
       ©2015 <a href="http://araleii.com">Araleii</a>
@@ -80,7 +93,13 @@
 
 
 	<!-- Scripts -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<!--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>-->
+
+	<!-- Placed at the end of the document so the pages load faster -->
+    <!--<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>-->
+
+	
 </body>
 </html>

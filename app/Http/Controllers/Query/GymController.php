@@ -7,30 +7,20 @@ use Illuminate\Http\Request;
 
 use App\BadmintonState;
 
-class QueryHomeController extends Controller {
+class GymController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-	 //该方法负责羽毛球
 	public function index($offset)
 	{
 		$d = date('Y-m-d',strtotime('+'.$offset.' day'));
-		return view('query.queryhome',['type'=>$d,'offset'=>$offset])
+		return view('query.queryadminhome',['type'=>$d,'offset'=>$offset])
 		->withBadmintonstates(BadmintonState::where('date', '=', $d)->get());
 	}
 
-
-	 //该方法负责乒乓球
-	public function pingpang()
-	{
-		return view('query.queryhome')->withBadmintonstates(BadmintonState::all());
-	}
-	
-	
-	
 	/**
 	 * Show the form for creating a new resource.
 	 *

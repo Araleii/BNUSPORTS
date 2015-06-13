@@ -51,8 +51,10 @@ Route::post('comment/store', 'CommentsController@store');
 //转到查询页面
 Route::group(['prefix' => 'query', 'namespace' => 'Query'], function()
 {
- 	Route::get('/', 'QueryHomeController@index');//这个默认是羽毛球的,这项业务比较繁忙
-	Route::get('pingpang','QueryHomeController@pingpang');
+ 	Route::get('badminton/{offset}', 'QueryHomeController@index');//这个默认是羽毛球的,这项业务比较繁忙,offset表示和今天的偏移
+	Route::get('pingpang','QueryHomeController@pingpang');//乒乓球的查询页面
+	
+	Route::get('adminhome/badminton/{offset}', 'GymController@index');// 场馆管理主页,同样默认是羽毛球的管理
 });
 
 //转到预定页面的控制器

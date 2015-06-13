@@ -22,6 +22,17 @@
 	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 	<script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 	
+	<!--自己写的js，用于求日期-->
+	<script type="text/javascript">
+		function getDate(offset){
+			var d = new Date();
+			d.setDate(d.getDate()+offset);
+			var str = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
+			return str;
+		}
+	</script>
+	
+	
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -57,7 +68,7 @@
 					@else
 						@if(Auth::user()->usertype==2)
 <!--						2代表管理员-->
-						<li><a href="{{ URL('query/adminhome/badminton/0') }}">场馆管理</a></li>
+						<li class="active"><a href="{{ URL('query/adminhome/badminton/0') }}">场馆管理</a></li>
 						<li><a href="{{ URL('activity/adminhome') }}">活动管理</a></li>
 						@endif
 						<li class="dropdown">
