@@ -17,7 +17,14 @@ class GymController extends Controller {
 	public function index($offset)
 	{
 		$d = date('Y-m-d',strtotime('+'.$offset.' day'));
-		return view('query.queryadminhome',['type'=>$d,'offset'=>$offset])
+		$today = date('Y-m-d');
+		$totalday = BadmintonState::where('date', '>=', $today)->distinct()->count('date');
+		
+		for($i=0;$i<$totalday;$i++){
+			$days[$i]=date('Y-m-d',strtotime('+'.$i.' day'));
+		}
+		
+		return view('query.queryadminhome',['days'=>$days,'offset'=>$offset,'totalday'=>$totalday])
 		->withBadmintonstates(BadmintonState::where('date', '=', $d)->get());
 	}
 

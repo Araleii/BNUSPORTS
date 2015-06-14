@@ -55,10 +55,16 @@ Route::group(['prefix' => 'query', 'namespace' => 'Query'], function()
 	Route::get('pingpang','QueryHomeController@pingpang');//乒乓球的查询页面
 	
 	Route::get('adminhome/badminton/{offset}', 'GymController@index');// 场馆管理主页,同样默认是羽毛球的管理
+	
+	Route::resource('gymadmin/badminton', 'BadmintonController');//属于羽毛球的资源路由
 });
 
-//转到预定页面的控制器
-Route::get('booking/{type}/{date}/{time}/{name}', 'BookingHomeController@index');
+
+
+Route::get('booking/pay/{userid}/{type}/{gymname}/{bookingdate}/{time}', 'BookingHomeController@pay');
+Route::get('booking/{type}/{date}/{time}/{name}', 'BookingHomeController@index');//转到预订页面的控制器
+
+
 
 //转到活动相关页面
 Route::group(['prefix' => 'activity','middleware' => 'auth'], function()

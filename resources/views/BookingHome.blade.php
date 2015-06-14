@@ -21,7 +21,9 @@
 				<div class="span4">
 				</div>
 				<div class="span4">
-					<form class="form-inline">
+					{{ Auth::user()->studentid }}
+					<form class="form-inline" action="{{ URL('booking/pay/'.Auth::user()->studentid.'/'.$type.'/'.$name.'/'.$date.'/'.$time) }}" method="GET">
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<fieldset>
 							  @if ($type=='badminton')
 								 <legend>

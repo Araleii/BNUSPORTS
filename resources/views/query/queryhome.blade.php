@@ -1,7 +1,7 @@
 @extends('appquery')
 
 @section('content')
-	<!--{{$type}}-->
+	{{ $days[1] }}
 	<div class="container">	
 
 
@@ -55,51 +55,13 @@
 				<div class="span4">
 <!--	日期导航部分开始-->
 					<ul class="nav nav-pills">
-					@if($offset==0)
-					  <li class="active"><a style="cursor:pointer;" id="d1" href="{{ URL('query/badminton/0') }}"></a></li>
-					@else
-					  <li><a style="cursor:pointer;" id="d1" href="{{ URL('query/badminton/0') }}"></a></li>
-					@endif
-					@if($offset==1)
-					  <li class="active"><a style="cursor:pointer;" id="d2" href="{{ URL('query/badminton/1') }}"></a></li>
-					@else
-					  <li><a style="cursor:pointer;" id="d2" href="{{ URL('query/badminton/1') }}"></a></li>
-					@endif
-					@if($offset==2)
-					  <li class="active"><a style="cursor:pointer;" id="d3" href="{{ URL('query/badminton/2') }}"></a></li>
-					@else
-					  <li><a style="cursor:pointer;" id="d3" href="{{ URL('query/badminton/2') }}"></a></li>
-					@endif
-					@if($offset==3)
-					  <li class="active"><a style="cursor:pointer;" id="d4" href="{{ URL('query/badminton/3') }}"></a></li>
-					@else
-					  <li><a style="cursor:pointer;" id="d4" href="{{ URL('query/badminton/3') }}"></a></li>
-					@endif
-					@if($offset==4)
-					  <li class="active"><a style="cursor:pointer;" id="d5" href="{{ URL('query/badminton/4') }}"></a></li>
-					@else
-					  <li><a style="cursor:pointer;" id="d5" href="{{ URL('query/badminton/4') }}"></a></li>
-					@endif
-					@if($offset==5)
-					  <li class="active"><a style="cursor:pointer;" id="d6" href="{{ URL('query/badminton/5') }}"></a></li>
-					@else
-					  <li><a style="cursor:pointer;" id="d6" href="{{ URL('query/badminton/5') }}"></a></li>
-					@endif
-					@if($offset==6)
-					  <li class="active"><a style="cursor:pointer;" id="d7" href="{{ URL('query/badminton/6') }}"></a></li>
-					@else
-					  <li><a style="cursor:pointer;" id="d7" href="{{ URL('query/badminton/6') }}"></a></li>
-					@endif
-
-					  	<script type="text/javascript">
-							document.getElementById("d1").innerHTML=getDate(0);
-							document.getElementById("d2").innerHTML=getDate(1);
-							document.getElementById("d3").innerHTML=getDate(2);
-							document.getElementById("d4").innerHTML=getDate(3);
-							document.getElementById("d5").innerHTML=getDate(4);
-							document.getElementById("d6").innerHTML=getDate(5);
-							document.getElementById("d7").innerHTML=getDate(6);
-						</script>
+					@for ($i = 0; $i < $totalday; $i++)
+					    @if($offset==$i)
+						<li class="active"><a style="cursor:pointer;" href="{{ URL('query/badminton/'.$i) }}">{{ $days[$i] }}</a></li>
+						@else
+						<li><a style="cursor:pointer;" href="{{ URL('query/badminton/'.$i) }}">{{ $days[$i] }}</a></li>
+						@endif
+					@endfor
 					</ul>
 <!--	日期导航部分开始-->
 				</div>
@@ -140,7 +102,7 @@
 							 <button type="submit" class="btn btn-primary">预定</button>
           				 </form>
                 		@else
-                 		<a href="#" class="btn btn-default btn-lg disabled" role="button">已订</a>
+                 		<a href="#" class="btn btn-default disabled" role="button">已订</a>
               			@endif
 					  </td>
 					  <td>
@@ -151,7 +113,7 @@
 							 <button type="submit" class="btn btn-primary">预定</button>
           				 </form>
                 		@else
-                 		<a href="#" class="btn btn-default btn-lg disabled" role="button">已订</a>
+                 		<a href="#" class="btn btn-default disabled" role="button">已订</a>
               			@endif
 					  </td>
 					 <td>
@@ -162,7 +124,7 @@
 							 <button type="submit" class="btn btn-primary">预定</button>
           				 </form>
                 		@else
-                 		<a href="#" class="btn btn-default btn-lg disabled" role="button">已订</a>
+                 		<a href="#" class="btn btn-default disabled" role="button">已订</a>
               			@endif
 					  </td>
 			      </tr>

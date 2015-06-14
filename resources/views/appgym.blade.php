@@ -30,6 +30,27 @@
 			var str = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
 			return str;
 		}
+		
+		function changeState(ID){
+			var d = document.getElementById(ID);
+			val = d.value;
+			d.value = 1 - val;
+			bid0 = ID+'0';
+			bid1 = ID+'1';	
+			
+			tableid = ID.substr(0, 3);
+			
+			if(d.value==0){
+				document.getElementById(bid0).style.display = "";
+				document.getElementById(bid1).style.display = "none";
+				document.getElementById(tableid).className = "success";
+				
+			}else{
+				document.getElementById(bid0).style.display = "none";
+				document.getElementById(bid1).style.display = "";
+				document.getElementById(tableid).className = "danger";
+			}
+		}
 	</script>
 	
 	
