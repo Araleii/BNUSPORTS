@@ -49,21 +49,26 @@ Route::post('comment/store', 'CommentsController@store');
 */
 
 //转到查询页面
-Route::group(['prefix' => 'query', 'namespace' => 'Query'], function()
+Route::group(['prefix' => 'query', 'namespace' => 'Query','middleware' => 'auth'], function()
 {
- 	Route::get('badminton/{offset}', 'QueryHomeController@index');//这个默认是羽毛球的,这项业务比较繁忙,offset表示和今天的偏移
+ 	Route::get('badminton/{offset}/{offsettennis}/{showtype}', 'QueryHomeController@index');//这个默认是羽毛球的,这项业务比较繁忙,offset表示和今天的偏移
 	Route::get('pingpang','QueryHomeController@pingpang');//乒乓球的查询页面
 	
-	Route::get('adminhome/badminton/{offset}', 'GymController@index');// 场馆管理主页,同样默认是羽毛球的管理
+	Route::get('adminhome/badminton/{offset}/{offsettennis}/{showtype}', 'GymController@index');// 场馆管理主页,同样默认是羽毛球的管理
 	
 	Route::resource('gymadmin/badminton', 'BadmintonController');//属于羽毛球的资源路由
+	Route::resource('gymadmin/pingpang', 'PingpangController');//属于乒乓球的资源路由
+	Route::resource('gymadmin/tennis', 'TennisController');//属于网球的资源路由
+	
+	Route::get('gymadmin/app/{id}', 'GymController@Dealwithapp');//属于篮球和足球订单的路由
 });
 
+   
 
+Route::get('booking/pay/{userid}/{type}/{gymname}/{bookingdate}/{time}/{id}', 'BookingHomeController@pay');//转到实现预定功能的页面，处理预定和存储账单
+Route::get('booking/{type}/{date}/{time}/{name}/{id}', 'BookingHomeController@index');//转到预订页面的控制器
 
-Route::get('booking/pay/{userid}/{type}/{gymname}/{bookingdate}/{time}', 'BookingHomeController@pay');
-Route::get('booking/{type}/{date}/{time}/{name}', 'BookingHomeController@index');//转到预订页面的控制器
-
+Route::get('application/{type}', 'AppController@index');//篮球,足球场和游泳池的申请页面
 
 
 //转到活动相关页面
@@ -73,3 +78,6 @@ Route::group(['prefix' => 'activity','middleware' => 'auth'], function()
 	Route::get('adminhome', 'ActivityController@adminhome');//这个用于返回带有管理功能的管理员页面
 	Route::resource('activityadmin', 'ActivityController');
 });
+
+
+Route::get('info', 'InfoController@index');//转到个人信息页面的控制器

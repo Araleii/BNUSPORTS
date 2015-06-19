@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\BadmintonState;
+use App\Pingpang;
+use App\Tennis;
+use App\Application;
+
 
 class QueryHomeController extends Controller {
 
@@ -15,20 +19,50 @@ class QueryHomeController extends Controller {
 	 * @return Response
 	 */
 	 //该方法负责羽毛球
-	public function index($offset)
+	public function index($offset,$offsettennis,$showtype)
 	{
+// 羽毛球的数据处理
 		$d = date('Y-m-d',strtotime('+'.$offset.' day'));
 		$today = date('Y-m-d');
 		$totalday = BadmintonState::where('date', '>=', $today)->distinct()->count('date');
-		
 		for($i=0;$i<$totalday;$i++){
 			$days[$i]=date('Y-m-d',strtotime('+'.$i.' day'));
 		}
-		
-		return view('query.queryhome',['days'=>$days,'offset'=>$offset,'totalday'=>$totalday])
+// 羽毛球的数据处理结束
+
+// 乒乓球的数据处理
+		$pingpangs = Pingpang::where('date', '=', $today)->get();
+// 乒乓球的数据处理结束
+
+// 网球的数据处理
+		$dtennis = date('Y-m-d',strtotime('+'.$offsettennis.' day'));
+		$totaldaytennis = Tennis::where('date', '>=', $today)->distinct()->count('date');
+		for($i=0;$i<$totaldaytennis;$i++){
+			$daystennis[$i]=date('Y-m-d',strtotime('+'.$i.' day'));
+		}
+		$tennises = Tennis::where('date', '=', $dtennis)->get();
+// 网球的数据处理结束
+
+
+// 篮球订单的数据处理
+		$basketballs = Application::where('type', '=', 'basketball')->get();
+//  篮球订单的数据处理结束
+
+		return view('query.queryhome',
+			[  
+				'days'=>$days,
+				'daystennis'=>$daystennis,
+			    'offset'=>$offset,
+				'offsettennis'=>$offsettennis,
+				'totalday'=>$totalday,
+				'totaldaytennis'=>$totaldaytennis,
+				'pingpangs'=>$pingpangs,
+				'tennises'=>$tennises,
+				'showtype'=>$showtype,
+				'basketballs'=>$basketballs
+			])
 		->withBadmintonstates(BadmintonState::where('date', '=', $d)->get());
 	}
-
 
 	 //该方法负责乒乓球
 	public function pingpang()

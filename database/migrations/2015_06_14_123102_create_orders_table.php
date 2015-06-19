@@ -20,7 +20,7 @@ class CreateOrdersTable extends Migration {
 			$table->integer('type')->nullable();//1~6对应六种
 			$table->string('gymname')->nullable();//羽毛球场馆1这样的
 			$table->datetime('paytime');//支付时间
-			$table->datetime('bookingtime');//租借时间
+			$table->datetime('bookingtime');//租借时间,就用这个名字了，虽然是日期类型(后来改了),还有一个字段time
 			$table->timestamps();
 		});
 	}

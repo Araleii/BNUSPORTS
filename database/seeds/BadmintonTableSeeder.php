@@ -17,7 +17,6 @@ class BadmintonTableSeeder extends Seeder {
           'morning'    => false,
           'afternoon'    => false,
           'evening'    => false,
-  
         ]);
       }
     }

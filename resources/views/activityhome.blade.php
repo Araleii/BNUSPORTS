@@ -23,6 +23,7 @@
               <h4>联系邮箱：{{ $activity->email }}</h4>
               <h4>活动要求：{{ $activity->requirement }}</h4>
             
+            
               <div class="content">
                 活动描述<textarea name="detail" rows="10" class="form-control" required="required"  readonly>{{   $activity->detail }}</textarea>
                 <!--<p>

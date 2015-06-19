@@ -37,7 +37,6 @@
 			d.value = 1 - val;
 			bid0 = ID+'0';
 			bid1 = ID+'1';	
-			
 			tableid = ID.substr(0, 3);
 			
 			if(d.value==0){
@@ -53,6 +52,11 @@
 		}
 	</script>
 	
+	<style type="text/css">
+	.table th, .table td { 
+		text-align: center; 
+	}
+	</style>
 	
 </head>
 <body>
@@ -70,7 +74,7 @@
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar">
-					<li><a href="{{ URL('query/badminton/0') }}">场馆查询</a></li>
+					<li><a href="{{ URL('query/badminton/0/0/1') }}">场馆查询</a></li>
 					<li><a href="{{ URL('activity') }}">活动信息</a></li>
 					<li><a></a></li>
 					<li><a></a></li>
@@ -89,13 +93,14 @@
 					@else
 						@if(Auth::user()->usertype==2)
 <!--						2代表管理员-->
-						<li class="active"><a href="{{ URL('query/adminhome/badminton/0') }}">场馆管理</a></li>
+						<li class="active"><a href="{{ URL('query/adminhome/badminton/0/0/1') }}">场馆管理</a></li>
 						<li><a href="{{ URL('activity/adminhome') }}">活动管理</a></li>
 						@endif
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="#">个人中心</a></li>
+								<li><a href="{{ URL('info') }}">个人中心</a></li>
+								<li><a href="{{ url('/password/email') }}">重置密码</a></li>
 								<li class="divider"></li>
 								<li><a href="{{ url('/auth/logout') }}">退出登录</a></li>
 							</ul>
@@ -117,7 +122,7 @@
 
 
 	<!-- Scripts -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<!--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>-->
 </body>
 </html>
